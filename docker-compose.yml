@@ -2,31 +2,16 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: ing-case-study
+      dockerfile: Dockerfile.dev
+    container_name: ing-case-study-dev
     ports:
-      - "80:80"
-    restart: unless-stopped
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - /app/node_modules
     environment:
-      - NODE_ENV=production
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+      - NODE_ENV=development
+    command: npm run dev
     networks:
       - app-network
 
