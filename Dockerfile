@@ -1,5 +1,5 @@
 # Base image - Build aşaması
-FROM --platform=$TARGETPLATFORM node:18-alpine AS builder
+FROM --platform=linux/amd64 node:18-alpine AS builder
 
 # Güvenlik için root olmayan kullanıcı oluştur
 RUN addgroup -g 1001 -S nodejs
@@ -21,7 +21,7 @@ COPY . .
 RUN npm run build
 
 # Üretim aşaması
-FROM --platform=$TARGETPLATFORM nginx:alpine
+FROM --platform=linux/amd64 nginx:alpine
 
 # Güvenlik için root olmayan kullanıcı oluştur
 RUN addgroup -g 1001 -S nodejs
