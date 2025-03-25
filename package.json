@@ -13,7 +13,13 @@
     "test:coverage": "web-test-runner test/real-component-tests/*.test.js --node-resolve --coverage",
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
-    "start": "vite"
+    "start": "vite",
+    "docker:dev": "docker-compose up",
+    "docker:dev:build": "docker-compose up --build",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up -d",
+    "docker:prod:build": "docker-compose -f docker-compose.prod.yml up -d --build",
+    "docker:down": "docker-compose down",
+    "docker:prod:down": "docker-compose -f docker-compose.prod.yml down"
   },
   "keywords": [],
   "author": "",

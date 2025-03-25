@@ -1,11 +1,18 @@
-# Build aşaması
-FROM node:18-alpine as build
+# Base image - Build aşaması
+FROM --platform=$TARGETPLATFORM node:18-alpine AS builder
 
+# Güvenlik için root olmayan kullanıcı oluştur
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S appuser -u 1001
+
+# Çalışma dizinini ayarla
 WORKDIR /app
 
-# Bağımlılıkları kopyala ve yükle
+# Package dosyalarını kopyala
 COPY package*.json ./
-RUN npm install
+
+# Bağımlılıkları yükle
+RUN npm ci
 
 # Kaynak kodları kopyala
 COPY . .
@@ -13,17 +20,24 @@ COPY . .
 # Uygulamayı derle
 RUN npm run build
 
-# Production aşaması
-FROM nginx:alpine
+# Üretim aşaması
+FROM --platform=$TARGETPLATFORM nginx:alpine
+
+# Güvenlik için root olmayan kullanıcı oluştur
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S appuser -u 1001
 
 # Build çıktısını nginx'e kopyala
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=builder --chown=appuser:nodejs /app/dist /usr/share/nginx/html
 
 # Nginx yapılandırmasını kopyala
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Port'u aç
+# Portu dışarı aç
 EXPOSE 80
+
+# Root olmayan kullanıcıya geç
+USER appuser
 
 # Nginx'i başlat
 CMD ["nginx", "-g", "daemon off;"] 
