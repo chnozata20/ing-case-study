@@ -27,6 +27,9 @@ FROM --platform=$TARGETPLATFORM nginx:alpine
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S appuser -u 1001
 
+# wget kurulumu
+RUN apk add --no-cache wget
+
 # Build çıktısını nginx'e kopyala
 COPY --from=builder --chown=appuser:nodejs /app/dist /usr/share/nginx/html
 
