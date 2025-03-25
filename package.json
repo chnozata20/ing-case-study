@@ -1,0 +1,56 @@
+{
+  "name": "ing-case-study",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "web-test-runner test/real-component-tests/*.test.js --node-resolve",
+    "test:coverage": "web-test-runner test/real-component-tests/*.test.js --node-resolve --coverage",
+    "localize:extract": "lit-localize extract",
+    "localize:build": "lit-localize build",
+    "start": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@lit/localize": "^0.11.4",
+    "@material-icons/font": "^1.0.36",
+    "@reduxjs/toolkit": "^2.2.1",
+    "@vaadin/router": "^1.7.4",
+    "country-flag-icons": "^1.5.10",
+    "lit": "^2.8.0",
+    "material-icons": "^1.13.14",
+    "redux": "^4.2.1",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@lit/localize-tools": "^0.8.0",
+    "@open-wc/testing": "^3.2.2",
+    "@open-wc/testing-helpers": "^1.0.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@web/test-runner": "^0.15.3",
+    "@web/test-runner-playwright": "^0.9.0",
+    "jest-mock": "^29.7.0",
+    "sinon": "^20.0.0",
+    "vite": "^4.4.9"
+  },
+  "resolutions": {
+    "lit": "^2.8.0",
+    "@lit/reactive-element": "^1.6.3",
+    "lit-element": "^3.3.3",
+    "lit-html": "^2.8.0"
+  },
+  "overrides": {
+    "lit": "^2.8.0",
+    "@lit/reactive-element": "^1.6.3",
+    "lit-element": "^3.3.3",
+    "lit-html": "^2.8.0"
+  }
+}
