@@ -23,6 +23,7 @@ RUN apk add --no-cache wget
 
 # Build edilmiş dosyaları kopyala
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/src/assets /usr/share/nginx/html/assets
 
 # Port'u aç
 EXPOSE 80
