@@ -19,7 +19,10 @@
     "docker:prod": "docker-compose -f docker-compose.prod.yml up -d",
     "docker:prod:build": "docker-compose -f docker-compose.prod.yml up -d --build",
     "docker:down": "docker-compose down",
-    "docker:prod:down": "docker-compose -f docker-compose.prod.yml down"
+    "docker:prod:down": "docker-compose -f docker-compose.prod.yml down",
+    "docker:up": "docker-compose up -d",
+    "docker:build": "docker-compose up -d --build",
+    "docker:logs": "docker-compose logs -f"
   },
   "keywords": [],
   "author": "",
