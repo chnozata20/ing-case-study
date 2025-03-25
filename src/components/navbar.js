@@ -206,7 +206,7 @@ export class Navbar extends connect(store)(LitElement) {
       <div class="navbar">
         <div class="navbar-left">
           <div class="brand-container">
-            <img src="/src/assets/ing_logo.png" alt="ING Logo" class="logo">
+            <img src="https://cdn.brandfetch.io/idNsVA30h5/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ING Logo" class="logo">
             <div class="brand-titles">
               <span class="brand-title">ING</span>
             </div>
