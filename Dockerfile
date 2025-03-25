@@ -24,9 +24,6 @@ RUN apk add --no-cache wget
 # Build edilmiş dosyaları kopyala
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Nginx yapılandırmasını kopyala
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 # Port'u aç
 EXPOSE 80
 
