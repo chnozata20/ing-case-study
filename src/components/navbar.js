@@ -41,10 +41,11 @@ export class Navbar extends connect(store)(LitElement) {
         display: flex;
         align-items: center;
         min-width: 0;
+        gap: 0.5rem;
       }
 
       .logo {
-        height: 45px;
+        height: 30px;
         width: auto;
         flex-shrink: 0;
       }
